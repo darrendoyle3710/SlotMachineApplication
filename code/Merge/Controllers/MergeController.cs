@@ -18,6 +18,12 @@ namespace Merge.Controllers
         {
             Configuration = configuration;
         }
+
+        private static readonly string[] Prizes = new[]
+        {
+            "$100","$500", "$1500","lion","log"
+        };
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
