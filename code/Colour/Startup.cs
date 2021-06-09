@@ -31,7 +31,7 @@ namespace Colour
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Colour", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BonusNumber", Version = "v1" });
             });
         }
 

@@ -22,12 +22,12 @@ namespace Merge.Controllers
         public async Task<IActionResult> Get()
         {
             // var numbersService = $"https://{Configuration["numbersServiceURL"]}/numbers";
-            var coloursService = $"https://localhost:44340/colour";
-            var serviceOneResponseCall = await new HttpClient().GetStringAsync(coloursService);
+            var animalsService = $"https://localhost:44340/animals";
+            var animalsServiceResponseCall = await new HttpClient().GetStringAsync(animalsService);
             // var lettersService = $"https://{Configuration["lettersServiceURL"]}/letters";
-            var themesService = $"https://localhost:44348/theme";
-            var serviceTwoResponseCall = await new HttpClient().GetStringAsync(themesService);
-            var mergedResponse = $"{serviceOneResponseCall}{serviceTwoResponseCall}";
+            var numberService = $"https://localhost:44348/bonusnumber";
+            var numberServiceTwoResponseCall = await new HttpClient().GetStringAsync(numberService);
+            var mergedResponse = $"{animalsServiceResponseCall}{numberServiceTwoResponseCall}";
             return Ok(mergedResponse);
         }
     }

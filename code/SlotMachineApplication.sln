@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend", "Frontend\Frontend.csproj", "{30E2DFE4-53E0-4436-B797-D4125716D6FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontend", "Frontend\Frontend.csproj", "{30E2DFE4-53E0-4436-B797-D4125716D6FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Merge", "Merge\Merge.csproj", "{59D5B046-DF38-4CA1-9946-B78332E1C24B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Merge", "Merge\Merge.csproj", "{59D5B046-DF38-4CA1-9946-B78332E1C24B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme", "Theme\Theme.csproj", "{5198943C-FD4D-4D6C-AB57-BF0CB133E1B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomAnimals", "Theme\RandomAnimals.csproj", "{5198943C-FD4D-4D6C-AB57-BF0CB133E1B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colour", "Colour\Colour.csproj", "{744F713A-B423-4554-BCBD-ED3C3BF2DBDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BonusNumber", "Colour\BonusNumber.csproj", "{744F713A-B423-4554-BCBD-ED3C3BF2DBDE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{30E2DFE4-53E0-4436-B797-D4125716D6FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -72,5 +69,11 @@ Global
 		{744F713A-B423-4554-BCBD-ED3C3BF2DBDE}.Release|x64.Build.0 = Release|Any CPU
 		{744F713A-B423-4554-BCBD-ED3C3BF2DBDE}.Release|x86.ActiveCfg = Release|Any CPU
 		{744F713A-B423-4554-BCBD-ED3C3BF2DBDE}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2812EEF6-9AD2-4A45-AC2A-F70D907BD3FA}
 	EndGlobalSection
 EndGlobal
