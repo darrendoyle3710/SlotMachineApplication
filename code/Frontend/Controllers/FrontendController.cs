@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Frontend.Models;
 using Microsoft.Extensions.Configuration;
 using System.Net.Http;
+using Newtonsoft.Json.Linq;
 
 namespace Frontend.Controllers
 {
@@ -24,10 +25,12 @@ namespace Frontend.Controllers
 
         public async Task<IActionResult> Index()
         {
-            // var mergedService = $"https://{Configuration["mergeServiceURL"]}/merge";
-            var mergedService = $"https://localhost:44370/merge";
+            // var mergedService = 
+            var mergedService = $"https://{Configuration["mergeServiceURL"]}/merge";
             var serviceThreeResponseCall = await new HttpClient().GetStringAsync(mergedService);
-            ViewBag.responseCall = serviceThreeResponseCall;
+            var details = JObject.Parse(serviceThreeResponseCall);
+            string responseString = string.Concat("animal is ", details["Animals"], " and number is " + details["Number"] + ", you win " + details["Prize"]);
+            ViewBag.responseCall = responseString;
             return View();
         }
     
