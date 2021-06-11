@@ -1,9 +1,103 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<header>
+    <style>
+        .pageWrapper {
+            height: 100%;
+            left: 0;
+            right: 0;
+            display: flex;
+            position: fixed;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: lightseagreen;
+            font-family: sans-serif;
+        }
+        .spinWrapper {
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 40px;
+            margin-bottom: 45px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 25px #555;
+            background-color: #ffffff;
+            align-items: center;
+        }
+        .resultWrapper {
+            width: 700px;
+            background-color: deeppink;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 15px #555;
+            font-size: 20px;
+            color: white;
+        }
+    </style>
+</header>
+<div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>@ViewBag.responseCall</p>
-    <p>hi github</p>
 </div>
+<div class="pageWrapper">
+    <h1 class="display-4" style="margin:40px">Slot Machine Application</h1>
+    <div class="spinWrapper">
+        <h2>Your Spin</h2>
+        <p style="font-family:cursive;font-style:italic;">@ViewBag.responseAnimal</p>
+        <p style="font-family:cursive;font-style:italic;">@ViewBag.responseNumber</p>
+        <div>
+            <button>Save</button>
+            <button onClick="window.location.reload();">New Spin</button>
+        </div>
+        
+    </div>
+    <div class="resultWrapper">
+        @ViewBag.responsePrize
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                DATABASE GOES HERE
+            </div>
+            <div class="col" style="background-color: #ffffff;border-radius:10px;margin-top:45px;">
+                <h2 style="margin:10px;">Prize Combos</h2>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Prize</th>
+                            <th scope="col">Combination</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Ferrari</th>
+                            <td>3 Matches & Bonus Ball</td>
+                        </tr>
+                        <tr>
+                            <th>$10,0000</th>
+                            <td>3 Matches</td>
+                        </tr>
+                        <tr>
+                            <th>$1,500</th>
+                            <td>2 Matches & Bonus Ball</td>
+                        </tr>
+                        <tr>
+                            <th>$500</th>
+                            <td>2 Matches</td>
+                        </tr>
+                        <tr>
+                            <th>$100</th>
+                            <td>Bonus Ball</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+    

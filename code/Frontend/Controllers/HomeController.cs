@@ -25,14 +25,16 @@ namespace Frontend.Controllers
 
         public async Task<IActionResult> Index()
         {
-            // var mergedService = 
             var mergedService = $"https://{Configuration["mergeServiceURL"]}/merge";
             var serviceThreeResponseCall = await new HttpClient().GetStringAsync(mergedService);
             var details = JObject.Parse(serviceThreeResponseCall);
-            string responseString = string.Concat("animal is ", details["Animals"], " and number is " + details["Number"] + ", you win " + details["Prize"]);
-            ViewBag.responseCall = responseString;
+            ViewBag.responsePrize = string.Concat("You Win " + details["Prize"] + "! " + "Bonus Ball was " + details["Bonus"]);
+            ViewBag.responseNumber = string.Concat("Number: " + details["Number"]);
+            ViewBag.responseAnimal = string.Concat("Animals: " + details["Animals"]);
+
+
             return View();
         }
-    
+
     }
 }

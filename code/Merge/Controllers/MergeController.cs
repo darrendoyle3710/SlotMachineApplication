@@ -71,7 +71,7 @@ namespace Merge.Controllers
                 } 
                 System.Diagnostics.Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bonus ball:" + Numbers[returnIndex] + " Key: {0}, Value: {1}", animal.Key, animal.Value);
             }
-            string mergedResponse = $@"{{'Animals':'{ animalsServiceResponseCall}','Number':'{numberServiceTwoResponseCall}','Prize':' {prize}'}}";
+            string mergedResponse = $@"{{'Animals':'{ animalsServiceResponseCall}','Number':'{numberServiceTwoResponseCall}','Prize':' {prize}','Bonus':' {Numbers[returnIndex]}'}}";
             return Ok(mergedResponse);
         }
     }
