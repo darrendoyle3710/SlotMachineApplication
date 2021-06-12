@@ -31,8 +31,6 @@ namespace Frontend.Controllers
             ViewBag.responsePrize = string.Concat("You Win " + details["Prize"] + "! " + "Bonus Ball was " + details["Bonus"]);
             ViewBag.responseNumber = string.Concat("Number: " + details["Number"]);
             ViewBag.responseAnimal = string.Concat("Animals: " + details["Animals"]);
-
-
             return View();
         }
 

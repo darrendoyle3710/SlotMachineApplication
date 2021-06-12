@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SlotMachineApplication.Library.Data;
 
 namespace Frontend
 {
@@ -23,8 +25,10 @@ namespace Frontend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // DB connection string
+            var myConnectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddRouting(r => r.LowercaseUrls = true);
-
+            services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(myConnectionString, ServerVersion.AutoDetect(myConnectionString), b => b.MigrationsAssembly("Frontend")));
             services.AddControllersWithViews();
         }
 
