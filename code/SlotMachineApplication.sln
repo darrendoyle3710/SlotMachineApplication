@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontend", "Frontend\Fronte
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Merge", "Merge\Merge.csproj", "{59D5B046-DF38-4CA1-9946-B78332E1C24B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomAnimals", "Theme\RandomAnimals.csproj", "{5198943C-FD4D-4D6C-AB57-BF0CB133E1B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomAnimals", "RandomAnimals\RandomAnimals.csproj", "{5198943C-FD4D-4D6C-AB57-BF0CB133E1B1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BonusNumber", "Colour\BonusNumber.csproj", "{744F713A-B423-4554-BCBD-ED3C3BF2DBDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BonusNumber", "BonusNumber\BonusNumber.csproj", "{744F713A-B423-4554-BCBD-ED3C3BF2DBDE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlotMachineApplication.Library", "SlotMachineApplication.Library\SlotMachineApplication.Library.csproj", "{BBF322C1-58AE-428C-9230-CB4FAB6EC6F7}"
 EndProject
