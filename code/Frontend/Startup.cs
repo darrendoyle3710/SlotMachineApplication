@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SlotMachineApplication.Library.Data;
+using SlotMachineApplication.Library.Interfaces;
+using SlotMachineApplication.Library.Repositories;
 
 namespace Frontend
 {
@@ -28,6 +30,7 @@ namespace Frontend
             // DB connection string
             var myConnectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddRouting(r => r.LowercaseUrls = true);
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(myConnectionString, ServerVersion.AutoDetect(myConnectionString), b => b.MigrationsAssembly("Frontend")));
             services.AddControllersWithViews();
         }

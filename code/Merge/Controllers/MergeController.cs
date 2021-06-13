@@ -69,9 +69,9 @@ namespace Merge.Controllers
                     if (numberServiceTwoResponseCall == Numbers[returnIndex]) prize = Prizes[3];
                     else prize = Prizes[2];
                 } 
-                System.Diagnostics.Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bonus ball:" + Numbers[returnIndex] + " Key: {0}, Value: {1}", animal.Key, animal.Value);
+                // System.Diagnostics.Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bonus ball:" + Numbers[returnIndex] + " Key: {0}, Value: {1}", animal.Key, animal.Value);
             }
-            string mergedResponse = $@"{{'Animals':'{ animalsServiceResponseCall}','Number':'{numberServiceTwoResponseCall}','Prize':' {prize}','Bonus':' {Numbers[returnIndex]}'}}";
+            string mergedResponse = $@"{{'Animals':'{animalsServiceResponseCall}','Number':'{numberServiceTwoResponseCall}','Prize':'{prize}','Bonus':'{Numbers[returnIndex]}'}}";
             return Ok(mergedResponse);
         }
     }
