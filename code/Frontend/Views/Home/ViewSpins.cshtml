@@ -1,0 +1,62 @@
+﻿@model IEnumerable<SlotMachineApplication.Library.Models.Spin>
+
+@{
+    ViewData["Title"] = "ViewSpins";
+}
+
+<div class="container">
+    <div style="text-align-last: center; background-color: white; border-radius: 10px; margin-top:10px;">
+        @Html.ActionLink("Back", "Index")
+    </div>
+    <div class="row">
+        <div class="col" style="background-color: #ffffff;border-radius:10px;margin-top:45px;">
+            <h2 style="margin:10px;text-align-last:center;">Previous Spins</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Animals)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BonusBall)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Prize)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedAt)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Animals)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BonusBall)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Prize)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreatedAt)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,6 @@
 ﻿@model SlotMachineApplication.Library.Models.Binding.AddSpin
+
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -9,7 +11,6 @@
             left: 0;
             right: 0;
             display: flex;
-            position: fixed;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -41,49 +42,59 @@
             font-size: 20px;
             color: white;
         }
+
     </style>
 </header>
-<div>
 
-</div>
 <div class="pageWrapper">
     <h1 class="display-4" style="margin:40px">Slot Machine Application</h1>
-    <form asp-action="Create">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
+    <div class="spinWrapper">
+        <form style="padding-left:20%" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div style="display:flex;" class="form-group">
+                <label class="control-label">Animals:</label>
+                <input style="box-shadow:none;background-color: white; border: none; padding-bottom: 20px;" asp-for="Animals" class="form-control" value="@ViewBag.responseAnimal" readonly>
+            </div>
+            <div style="display:flex;" class="form-group">
+                <label class="control-label">Number:</label>
+                <input style="box-shadow: none; background-color: white; border: none; padding-bottom: 20px;" class="form-control" value="@ViewBag.responseNumber" readonly>
+            </div>
+            <div style="display:flex;" class="form-group">
+                <label style="white-space:nowrap;" class="control-label">Bonus Number (@ViewBag.responseBonusNumber):</label>
+                <input style="box-shadow: none; background-color: white; border: none; padding-bottom: 20px;" asp-for="BonusBall" class="form-control" value="@ViewBag.bonus" type="text" checked="@ViewBag.bonus" readonly>
+            </div>
+            <div style="display:flex;" class="form-group">
+                <label class="control-label">Prize:</label>
+                <input style="box-shadow: none; background-color: white; border: none; padding-bottom: 20px;" asp-for="Prize" class="form-control" value="@ViewBag.responsePrize" readonly>
+            </div>
+            <div style="display:flex">
+                <div class="form-group">
+                    <input style="width:40%;" type="submit" value="Save" class="btn btn-primary" />
+                    <input style="cursor: pointer; width: 40%;" onclick="window.location.reload();" value="New Spin" class="btn btn-primary" />
+                </div>
+            </div>
+            <div style="padding-left: 20%;">
+                @Html.ActionLink("Previous Spins", "ViewSpins")
+            </div>
+        </form>
+    </div>
 
-            <input asp-for="Animals" class="form-control" value="@ViewBag.responseAnimal" />
-        </div>
-        <div class="form-group">
-            <input asp-for="Prize" class="form-control" value="@ViewBag.responsePrize">
-        </div>
-        <div class="form-group">
-            <input asp-for="BonusBall" class="form-control" >
-        </div>
-        <button onClick="window.location.reload();">New Spin</button>
-        <div class="form-group">
-            <input type="submit" value="Save" class="btn btn-primary" />
-        </div>
-    </form>
     <div class="resultWrapper">
-        @ViewBag.responsePrize
+        You Win @ViewBag.responsePrize !
     </div>
     <div class="container">
         <div class="row">
-            <div class="col">
-                DATABASE GOES HERE
-            </div>
             <div class="col" style="background-color: #ffffff;border-radius:10px;margin-top:45px;">
-                <h2 style="margin:10px;">Prize Combos</h2>
+                <h2 style="margin: 10px; text-align-last: center;">Prize Combos</h2>
 
                 <table class="table">
-                    <thead>
+                    <thead style="text-align-last:center;">
                         <tr>
                             <th scope="col">Prize</th>
                             <th scope="col">Combination</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="text-align-last:center;">
                         <tr>
                             <th>Ferrari</th>
                             <td>3 Matches & Bonus Ball</td>

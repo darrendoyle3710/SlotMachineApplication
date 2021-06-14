@@ -28,19 +28,31 @@ namespace Frontend.Controllers
             repository = repositoryWrapper;
         }
 
-        [Route("Index")]
-        public IActionResult Display()
+        [Route("ViewSpins")]
+        public IActionResult ViewSpins()
         {
-            var allSpins = repository.Spins.FindAll();
+            var allSpins = repository.Spins.FindAll().ToList();
             return View(allSpins);
+        }
+        [Route("delete/{id:int}")]
+        public IActionResult Delete(int id)
+        {
+            var spinToDelete = repository.Spins.FindByCondition(s => s.ID == id).FirstOrDefault();
+            if (spinToDelete == null)
+            {
+                Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bind model" + spinToDelete);
+            }
+            repository.Spins.Delete(spinToDelete);
+            repository.Save();
+            return RedirectToAction("ViewSpins");
         }
 
         [HttpPost("Index")]
         public IActionResult Create(AddSpin bindingModel)
         {
-            Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bind model" + bindingModel.Animals + " " + bindingModel.Animals + " bonus " + bindingModel.BonusBall);
-            // repository.Spins.Create(new Spin { Animals = bindingModel.Animals, BonusBall = bindingModel.BonusBall, Prize = bindingModel.Prize, CreatedAt = DateTime.Now });
-            // repository.Save();
+            Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bind model" + bindingModel.Animals + " prize " + bindingModel.Prize + " bonus " + bindingModel.BonusBall);
+            repository.Spins.Create(new Spin { Animals = bindingModel.Animals, BonusBall = bindingModel.BonusBall, Prize = bindingModel.Prize, CreatedAt = DateTime.Now });
+            repository.Save();
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> Index()
@@ -52,10 +64,10 @@ namespace Frontend.Controllers
             ViewBag.responseBonusNumber = details["Bonus"];
             ViewBag.responseNumber = details["Number"];
             ViewBag.responseAnimal = details["Animals"];
-            Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> view bags" + details["Animals"] + details["Number"] + details["Bonus"] + details["Prize"]);
-            if (ViewBag.responseBonusNumber == ViewBag.responseNumber) ViewBag.bonus = "true";
-            else ViewBag.bonus = "false";
-            Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> num" + details["Number"] + " bonus " + details["Bonus"]);
+            // Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> view bags" + details["Animals"] + details["Number"] + details["Bonus"] + details["Prize"]);
+            if (ViewBag.responseBonusNumber == ViewBag.responseNumber) ViewBag.bonus = true;
+            else ViewBag.bonus = false;
+            // Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> num" + details["Number"] + " bonus " + details["Bonus"]);
             return View();
         }
 
