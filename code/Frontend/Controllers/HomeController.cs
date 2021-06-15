@@ -17,42 +17,44 @@ namespace Frontend.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private IConfiguration Configuration;
         private IRepositoryWrapper repository;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IRepositoryWrapper repositoryWrapper)
+        public HomeController(IConfiguration configuration, IRepositoryWrapper repositoryWrapper)
         {
-            _logger = logger;
             Configuration = configuration;
             repository = repositoryWrapper;
         }
 
         [Route("ViewSpins")]
-        public IActionResult ViewSpins()
+        public ActionResult<IEnumerable<Spin>> ViewSpins()
         {
             var allSpins = repository.Spins.FindAll().ToList();
             return View(allSpins);
         }
+
         [Route("delete/{id:int}")]
-        public IActionResult Delete(int id)
+        public ActionResult<Spin> Delete(int id)
         {
             var spinToDelete = repository.Spins.FindByCondition(s => s.ID == id).FirstOrDefault();
             if (spinToDelete == null)
             {
-                Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bind model" + spinToDelete);
+                Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> deleting" + spinToDelete);
             }
             repository.Spins.Delete(spinToDelete);
             repository.Save();
+
             return RedirectToAction("ViewSpins");
         }
 
         [HttpPost("Index")]
-        public IActionResult Create(AddSpin bindingModel)
+        public ActionResult<Spin> Create(AddSpin bindingModel)
         {
             Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bind model" + bindingModel.Animals + " prize " + bindingModel.Prize + " bonus " + bindingModel.BonusBall);
-            repository.Spins.Create(new Spin { Animals = bindingModel.Animals, BonusBall = bindingModel.BonusBall, Prize = bindingModel.Prize, CreatedAt = DateTime.Now });
+            var spinToCreate = new Spin { Animals = bindingModel.Animals, BonusBall = bindingModel.BonusBall, Prize = bindingModel.Prize, CreatedAt = DateTime.Now };
+            repository.Spins.Create(spinToCreate);
             repository.Save();
+
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> Index()
