@@ -44,6 +44,7 @@ namespace Frontend.Controllers
             repository.Spins.Delete(spinToDelete);
             repository.Save();
 
+
             return RedirectToAction("ViewSpins");
         }
 
@@ -55,6 +56,7 @@ namespace Frontend.Controllers
             repository.Spins.Create(spinToCreate);
             repository.Save();
 
+            
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> Index()

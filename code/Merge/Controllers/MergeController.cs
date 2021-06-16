@@ -32,18 +32,10 @@ namespace Merge.Controllers
             "1","2","3","4","5","6","7","8","9","0"
         };
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        private string GetPrize(string animalsServiceResponseCall, string numberServiceTwoResponseCall, int returnIndex)
         {
-            var animalsService = $"https://{Configuration["animalServiceURL"]}/animals";
-            var animalsServiceResponseCall = await new HttpClient().GetStringAsync(animalsService);
-            var numberService = $"https://{Configuration["numberServiceURL"]}/bonusnumber";
-            var numberServiceTwoResponseCall = await new HttpClient().GetStringAsync(numberService);
-            var rnd = new Random();
-            var returnIndex = rnd.Next(0, 9);
             var prize = Prizes[0];
             if (numberServiceTwoResponseCall == Numbers[returnIndex]) prize = Prizes[1];
-            
 
             //logic
             string compareStr = "";
@@ -59,19 +51,32 @@ namespace Merge.Controllers
 
             foreach (KeyValuePair<string, int> animal in animalTracker)
             {
-                if(animal.Value == 3)
+                if (animal.Value == 3)
                 {
                     if (numberServiceTwoResponseCall == Numbers[returnIndex]) prize = Prizes[5];
                     else prize = Prizes[4];
-                } 
-                else if(animal.Value == 2)
+                }
+                else if (animal.Value == 2)
                 {
                     if (numberServiceTwoResponseCall == Numbers[returnIndex]) prize = Prizes[3];
                     else prize = Prizes[2];
-                } 
+                }
                 // System.Diagnostics.Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bonus ball:" + Numbers[returnIndex] + " Key: {0}, Value: {1}", animal.Key, animal.Value);
             }
-            string mergedResponse = $@"{{'Animals':'{animalsServiceResponseCall}','Number':'{numberServiceTwoResponseCall}','Prize':'{prize}','Bonus':'{Numbers[returnIndex]}'}}";
+            return $@"{{'Animals':'{animalsServiceResponseCall}','Number':'{numberServiceTwoResponseCall}','Prize':'{prize}','Bonus':'{Numbers[returnIndex]}'}}";
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var animalsService = $"https://{Configuration["animalServiceURL"]}/animals";
+            string animalsServiceResponseCall = await new HttpClient().GetStringAsync(animalsService);
+            var numberService = $"https://{Configuration["numberServiceURL"]}/bonusnumber";
+            string numberServiceResponseCall = await new HttpClient().GetStringAsync(numberService);
+            var rnd = new Random();
+            var returnIndex = rnd.Next(0, 9);
+
+            string mergedResponse = GetPrize(animalsServiceResponseCall, numberServiceResponseCall, returnIndex);
             return Ok(mergedResponse);
         }
     }
