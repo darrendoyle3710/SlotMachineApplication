@@ -9,9 +9,8 @@ specifically, this will involve:
 * C# Fundamentals
 * Unit Testing
 * Git
-* Basic Linux
-* Angular Web Development
 * Continuous Integration
+* Software Development with C#
 * Cloud Fundamentals
 * Databases
 
