@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace SlotMachineApplication.Library.Models
 {
+    [ExcludeFromCodeCoverage]
     public class Spin
     {
         public int ID { get; set; }

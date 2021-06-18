@@ -32,12 +32,13 @@ namespace Merge.Controllers
             "1","2","3","4","5","6","7","8","9","0"
         };
 
+        // switched to public access modifier GetPrize for unit test
         private string GetPrize(string animalsServiceResponseCall, string numberServiceTwoResponseCall, int returnIndex)
         {
             var prize = Prizes[0];
             if (numberServiceTwoResponseCall == Numbers[returnIndex]) prize = Prizes[1];
 
-            //logic
+            // for loop which loops the animal string and counts the animals in a dictionary
             string compareStr = "";
             for (int i = 0; i < animalsServiceResponseCall.Length; i++)
             {
@@ -48,7 +49,7 @@ namespace Merge.Controllers
                     compareStr = "";
                 }
             }
-
+            // loops dictionary to find animals used more tha 0 times
             foreach (KeyValuePair<string, int> animal in animalTracker)
             {
                 if (animal.Value == 3)
@@ -66,6 +67,7 @@ namespace Merge.Controllers
             return $@"{{'Animals':'{animalsServiceResponseCall}','Number':'{numberServiceTwoResponseCall}','Prize':'{prize}','Bonus':'{Numbers[returnIndex]}'}}";
         }
 
+        // Using the prize method and passing in the other 2 services, returning json result to frontend
         [HttpGet]
         public async Task<IActionResult> Get()
         {

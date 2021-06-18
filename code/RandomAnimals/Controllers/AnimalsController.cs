@@ -17,6 +17,7 @@ namespace Theme.Controllers
             "penguin","cat", "tiger","lion","log"
         };
 
+        //Generates a random combination of animals
         [HttpGet]
         public string Get()
         {

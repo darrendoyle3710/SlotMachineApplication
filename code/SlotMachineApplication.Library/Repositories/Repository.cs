@@ -3,6 +3,7 @@ using SlotMachineApplication.Library.Data;
 using SlotMachineApplication.Library.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace SlotMachineApplication.Library.Repositories
 {
+    [ExcludeFromCodeCoverage]
     public class Repository<T> : IRepository<T> where T : class
     {
         protected ApplicationDbContext RepositoryContext { get; set; }

@@ -224,19 +224,12 @@ var assemblies = [
   {
     "name": "BonusNumber",
     "classes": [
-      { "name": "Colour.Controllers.BonusNumberController", "rp": "BonusNumber_BonusNumberController.html", "cl": 9, "ucl": 0, "cal": 9, "tl": 24, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Colour.Program", "rp": "BonusNumber_Program.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 26, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Colour.Startup", "rp": "BonusNumber_Startup.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 60, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 2, "lch": [], "bch": [], "hc": [] },
+      { "name": "Colour.Controllers.BonusNumberController", "rp": "BonusNumber_BonusNumberController.html", "cl": 9, "ucl": 0, "cal": 9, "tl": 25, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
     ]},
   {
     "name": "Frontend",
     "classes": [
-      { "name": "Frontend.Controllers.HomeController", "rp": "Frontend_HomeController.html", "cl": 26, "ucl": 12, "cal": 38, "tl": 77, "ct": "LineCoverage", "mc": "-", "cb": 3, "tb": 26, "lch": [], "bch": [], "hc": [] },
-      { "name": "Frontend.Migrations.ApplicationDbContextModelSnapshot", "rp": "Frontend_ApplicationDbContextModelSnapshot.html", "cl": 0, "ucl": 27, "cal": 27, "tl": 45, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Frontend.Migrations.InitDB", "rp": "Frontend_InitDB.html", "cl": 0, "ucl": 48, "cal": 48, "tl": 81, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Frontend.Models.ErrorViewModel", "rp": "Frontend_ErrorViewModel.html", "cl": 0, "ucl": 2, "cal": 2, "tl": 11, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Frontend.Program", "rp": "Frontend_Program.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 26, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Frontend.Startup", "rp": "Frontend_Startup.html", "cl": 0, "ucl": 32, "cal": 32, "tl": 66, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 2, "lch": [], "bch": [], "hc": [] },
+      { "name": "Frontend.Controllers.HomeController", "rp": "Frontend_HomeController.html", "cl": 26, "ucl": 12, "cal": 38, "tl": 80, "ct": "LineCoverage", "mc": "-", "cb": 3, "tb": 26, "lch": [], "bch": [], "hc": [] },
     ]},
   {
     "name": "Frontend.Views",
@@ -250,26 +243,16 @@ var assemblies = [
   {
     "name": "Merge",
     "classes": [
-      { "name": "Merge.Controllers.MergeController", "rp": "Merge_MergeController.html", "cl": 38, "ucl": 13, "cal": 51, "tl": 83, "ct": "LineCoverage", "mc": "-", "cb": 12, "tb": 16, "lch": [], "bch": [], "hc": [] },
-      { "name": "Merge.Program", "rp": "Merge_Program.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 26, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Merge.Startup", "rp": "Merge_Startup.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 60, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 2, "lch": [], "bch": [], "hc": [] },
+      { "name": "Merge.Controllers.MergeController", "rp": "Merge_MergeController.html", "cl": 38, "ucl": 13, "cal": 51, "tl": 85, "ct": "LineCoverage", "mc": "-", "cb": 12, "tb": 16, "lch": [], "bch": [], "hc": [] },
     ]},
   {
     "name": "RandomAnimals",
     "classes": [
-      { "name": "Theme.Controllers.AnimalsController", "rp": "RandomAnimals_AnimalsController.html", "cl": 14, "ucl": 0, "cal": 14, "tl": 34, "ct": "LineCoverage", "mc": "-", "cb": 2, "tb": 2, "lch": [], "bch": [], "hc": [] },
-      { "name": "Theme.Program", "rp": "RandomAnimals_Program.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 26, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Theme.Startup", "rp": "RandomAnimals_Startup.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 60, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 2, "lch": [], "bch": [], "hc": [] },
+      { "name": "Theme.Controllers.AnimalsController", "rp": "RandomAnimals_AnimalsController.html", "cl": 14, "ucl": 0, "cal": 14, "tl": 35, "ct": "LineCoverage", "mc": "-", "cb": 2, "tb": 2, "lch": [], "bch": [], "hc": [] },
     ]},
   {
     "name": "SlotMachineApplication.Library",
     "classes": [
-      { "name": "SlotMachineApplication.Library.Data.ApplicationDbContext", "rp": "SlotMachineApplication.Library_ApplicationDbContext.html", "cl": 0, "ucl": 2, "cal": 2, "tl": 17, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "SlotMachineApplication.Library.Models.Binding.AddSpin", "rp": "SlotMachineApplication.Library_AddSpin.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 15, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "SlotMachineApplication.Library.Models.Spin", "rp": "SlotMachineApplication.Library_Spin.html", "cl": 5, "ucl": 0, "cal": 5, "tl": 16, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "SlotMachineApplication.Library.Repositories.Repository<T>", "rp": "SlotMachineApplication.Library_Repository_1.html", "cl": 0, "ucl": 20, "cal": 20, "tl": 45, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "SlotMachineApplication.Library.Repositories.RepositoryWrapper", "rp": "SlotMachineApplication.Library_RepositoryWrapper.html", "cl": 0, "ucl": 14, "cal": 14, "tl": 38, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 2, "lch": [], "bch": [], "hc": [] },
-      { "name": "SlotMachineApplication.Library.Repositories.SpinRepository", "rp": "SlotMachineApplication.Library_SpinRepository.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 19, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
     ]},
 ];
 

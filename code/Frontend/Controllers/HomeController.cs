@@ -25,14 +25,14 @@ namespace Frontend.Controllers
             Configuration = configuration;
             repository = repositoryWrapper;
         }
-
+        // displays all spins in spin table of database
         [Route("ViewSpins")]
         public ActionResult<IEnumerable<Spin>> ViewSpins()
         {
             var allSpins = repository.Spins.FindAll().ToList();
             return View(allSpins);
         }
-
+        // deletes specific record based on id
         [Route("delete/{id:int}")]
         public ActionResult<Spin> Delete(int id)
         {
@@ -48,6 +48,7 @@ namespace Frontend.Controllers
             return RedirectToAction("ViewSpins");
         }
 
+        // parses the merge controller json value into usable viewbags and displays them appropriately 
         [HttpPost("Index")]
         public ActionResult<Spin> Create(AddSpin bindingModel)
         {
