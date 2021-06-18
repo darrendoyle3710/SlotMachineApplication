@@ -19,14 +19,14 @@ The application is based on a traditional slot machine with an additional twist;
 
 
 ## Requirements ##
-The conception of this project involved setting up a clear structure of requirements. I undertook MoSCoW prioritisation techniques to get started; this a common requirements management strategy for agile based development projects. I looked at project requirements under 4 scopes: **Must Have, Should Have, Could Have and Won't Have;** listed in descending order of priority.
+The conception of this project involved setting up a clear structure of requirements. I undertook MoSCoW prioritization techniques to get started; this a common requirements management strategy for agile based development projects. I looked at project requirements under 4 scopes: **Must Have, Should Have, Could Have and Won't Have;** listed in descending order of priority.
 
 
 #### MoSCoW Requirements Diagram ####
 
 ![MoSCoW Requirements Diagram](Images/Requirements.PNG)
 
-In the four quadrants above, each represents one the prioritisation categories, the **Must Have** section is the most important because it represents requirements which must be met in order to obtain a minimum viable product. The next step is representing the project requirements in a more development-digestible format using a **Kanban board**; the requirements will be broken down through **Stories and Epics**
+In the four quadrants above, each represents one the prioritization categories, the **Must Have** section is the most important because it represents requirements which must be met in order to obtain a minimum viable product. The next step is representing the project requirements in a more development-digestible format using a **Kanban board**; the requirements will be broken down through **Stories and Epics**
 
 
 
@@ -46,13 +46,13 @@ These risks were formulated based on the technology stack required for the proje
 | DDOS attack    | Server goes down |    Medium    | High | Microsoft | Recreate infrastruture on another machine  |  Use infrastructure as code to quickly recreate machine   |
 | High traffic    | Server requests could be unreliable/unavailable   |  Medium  | High| Developer  | Buy more azure server network allocation  | Ensure services are elastic|
 | Data breach    | Customer data compromised   |   Medium    | Medium | Developer  | Notify relevant parties | Revise project access hierarchy and advise on latest security practices|
-| Regional power outage     | Application goes offline   |    Low    | High | Cloud Service Provider  | Recreate infrsatructure in another region  | Set up standby server in another region |
+| Regional power outage     | Application goes offline   |    Low    | High | Cloud Service Provider  | Recreate infrastructure in another region  | Set up standby server in another region |
 | Not delivering requirements on schedule    | Application wont meet minimum viable prodcut scope  |    Medium    | High | Developer  | Amend scheduled project delivery time   | Stick to minimum viable product scope as a first priority |
 
 
 ### User Stories ###
 ![Kanban](Images/Kanban.PNG)
-Using Jira, the project requirements were tracked continously using a kanban board which can be seen [here](https://darrendoyle.atlassian.net/jira/software/projects/SMA/boards/4 "Named link title"). The project tracking process was very simple and revolved around user stories which could either be frontend or backend related. A user story will usually outline a job that needs to be done from a developer or user perspective. I put all user stories on the backlog and when it was time to use them, I would put them on the kanban board. The kanban board has four simple stages: To Do, In Progress, Testing, Done. To Do means the story is yet to be taken up or worked on yet, this may be because of dependecy on another user story. In Progress means the story is being worked on currently. Testing means the completed story is neing analysed for any bugs, if it passes it moves to Done.
+Using Jira, the project requirements were tracked continuously using a kanban board which can be seen [here](https://darrendoyle.atlassian.net/jira/software/projects/SMA/boards/4 "Named link title"). The project tracking process was very simple and revolved around user stories which could either be frontend or backend related. A user story will usually outline a job that needs to be done from a developer or user perspective. I put all user stories on the backlog and when it was time to use them, I would put them on the kanban board. The kanban board has four simple stages: To Do, In Progress, Testing, Done. To Do means the story is yet to be taken up or worked on yet, this may be because of dependency on another user story. In Progress means the story is being worked on currently. Testing means the completed story is being analysed for any bugs, if it passes it moves to Done.
 
 
 ## Design ##
@@ -73,9 +73,11 @@ This diagram give a general understanding of the development process for the app
 
 ## Service 1 - Frontend ##
 The frontend was designed using an Angular framework form javascript, this was stretch goal which was I felt was necessary to consolidate my learning. In the frontend I tried to showcase as much as I learned in training with the Ng module, Component-Orientated project structure, Directives and Observables.
+
+
 ### Database ###
 ![ERD](ERD.PNG)
-There are two database tables which are Users and Posts. Users is the entity which represents a user on the system, they have a user account which permits them to create Posts. This relationship between the tables is a **One and Only One To Zero Or Many**, a user can none or many posts, while a post only belongs to a single User record if it exists. This establishes a UserID foreign key in the Posts table which establishes the link. Users will be able to use CRUD functionality on the post table through the applciation built on this database.
+There are two database tables which are Users and Posts. Users is the entity which represents a user on the system, they have a user account which permits them to create Posts. This relationship between the tables is a **One and Only One To Zero Or Many**, a user can none or many posts, while a post only belongs to a single User record if it exists. This establishes a UserID foreign key in the Posts table which establishes the link. Users will be able to use CRUD functionality on the post table through the application built on this database.
 
 
 ## Service 2 - Random Animals ## 
@@ -84,7 +86,7 @@ The backend was designed in ASP.Net Core, and was implemented as an API applicat
 
 
 ### Service 3 - Bonus Number ###
-The database of choice was MYSQL, which is hosted on an Azure Virtual Machine. To hook this up to the applicaton we needed a connection string and appropriate Data models to represent the tables with in the database. 
+The database of choice was MYSQL, which is hosted on an Azure Virtual Machine. To hook this up to the application we needed a connection string and appropriate Data models to represent the tables with in the database. 
 
 
 ### Service 4 - Merge Service ###
@@ -97,12 +99,13 @@ Extensive Unit testing was conducted on both controllers, ensuring operations we
 ![testing coverage](Images/finalcoverage.PNG)
 
 
-
 ## Terraform ##
 The application was deployed with Azure DevOps using Azure pipelines. This set up allows for continuous deployment and integration of application builds while staying live in deployment. The application itself is being hosted on azure app service, with a virtual machine acting as a build agent. Below we can see the successful pipleline build of the application and subequent deployment to the app server. The devops project can be found [here](https://dev.azure.com/darrenadoyle/fifa-finder-project "Named link title")
 
+
 ## Ansible ##
 The application was deployed with Azure DevOps using Azure pipelines. This set up allows for continuous deployment and integration of application builds while staying live in deployment. The application itself is being hosted on azure app service, with a virtual machine acting as a build agent. Below we can see the successful pipleline build of the application and subequent deployment to the app server. The devops project can be found [here](https://dev.azure.com/darrenadoyle/fifa-finder-project "Named link title")
+
 
 ## CI/CD Pipeline & Deployment ##
 The application was deployed with Azure DevOps using Azure pipelines. This set up allows for continuous deployment and integration of application builds while staying live in deployment. The application itself is being hosted on azure app service, with a virtual machine acting as a build agent. Below we can see the successful pipleline build of the application and subequent deployment to the app server. The devops project can be found [here](https://dev.azure.com/darrenadoyle/fifa-finder-project "Named link title")
@@ -111,14 +114,10 @@ The application was deployed with Azure DevOps using Azure pipelines. This set u
 ![Backend](Images/backenddeploy.PNG)
 
 
-
 ## What To Improve ## 
 * The repository pattern was implemented too late and made project timing difficult, this had a knock on effect to other areas of the application.
 * Based on the last step, there were issues parsing the user object back to the frontend, despite my best efforts using a data bind model to return the user ID for posts.
 * Issues with deployment of the separate applications.
 
-## References ## 
-* Used the bootstrap library for some styling in Angular.
-* Used [this medium article](https://jacobneterer.medium.com/angular-authentication-securing-routes-with-route-guards-2be6c51b6a23 "Named link title")  to aid with services and guarded route set up 
 
 
