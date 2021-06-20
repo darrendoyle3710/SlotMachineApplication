@@ -108,7 +108,7 @@ Extensive Unit testing was conducted on all service controllers, ensuring operat
 ## What To Improve ## 
 * 
 * 
-* Issues with deployment of the separate applications.
+* 
 
 
 
