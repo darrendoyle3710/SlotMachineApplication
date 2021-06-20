@@ -35,19 +35,19 @@ The next phase of the project requires stringent risk analysis to decide on prot
 
 
 ### Risk Assessment ###
-These risks were formulated based on the technology stack required for the project and analysing what could go wrong in their interactions, there is a clear pattern of how these risks arise and what the approach to them will be.
+These risks were formulated based on the technology stack required for the project and analyzing what could go wrong in their interactions, there is a clear pattern of how these risks arise and what the approach to them will be.
 
 
 #### Risk Assessment Matrix ####
 |   Risk          | Evaluation | Likelihood| Impact  | Responsibility   |Response   | Control Measure  |
 |:-------|:------|:---    |:---    |:-------|:------|:-----  |
-| Application's virtual machine goes down | Application goes offline| Low | High | Cloud Service Provider  | Recreate infrastruture on another machine |  Use terraform scripting to rapidly recreate infrastructure  |
-| Broken version deployed onto production   | Application may not have all required features functional  |   Medium    | High | Developer     | Revert production to latest stable verion  | Automate tests before production push and restrict access to production branch      |
-| DDOS attack    | Server goes down |    Medium    | High | Microsoft | Recreate infrastruture on another machine  |  Use infrastructure as code to quickly recreate machine   |
+| Application's virtual machine goes down | Application goes offline| Low | High | Cloud Service Provider  | Recreate infrastructure on another machine |  Use terraform scripting to rapidly recreate infrastructure  |
+| Broken version deployed onto production   | Application may not have all required features functional  |   Medium    | High | Developer     | Revert production to latest stable version  | Automate tests before production push and restrict access to production branch      |
+| DDOS attack    | Server goes down |    Medium    | High | Microsoft | Recreate infrastructure on another machine  |  Use infrastructure as code to quickly recreate machine   |
 | High traffic    | Server requests could be unreliable/unavailable   |  Medium  | High| Developer  | Buy more azure server network allocation  | Ensure services are elastic|
 | Data breach    | Customer data compromised   |   Medium    | Medium | Developer  | Notify relevant parties | Revise project access hierarchy and advise on latest security practices|
 | Regional power outage     | Application goes offline   |    Low    | High | Cloud Service Provider  | Recreate infrastructure in another region  | Set up standby server in another region |
-| Not delivering requirements on schedule    | Application wont meet minimum viable prodcut scope  |    Medium    | High | Developer  | Amend scheduled project delivery time   | Stick to minimum viable product scope as a first priority |
+| Not delivering requirements on schedule    | Application wont meet minimum viable product scope  |    Medium    | High | Developer  | Amend scheduled project delivery time   | Stick to minimum viable product scope as a first priority |
 
 
 ### User Stories ###
@@ -68,7 +68,7 @@ Using Jira, the project requirements were tracked continuously using a kanban bo
 
 ![Application](Images/appplan.png)
 
-This diagram give a general understanding of the development process for the application. The frontend service provides a visual platform for the other 3 services to work within. The project is sourced controlled with git, stored on github and continuously deliverd/integrated with Azure Pipelines. The infrastructure to run this architexture is spun up using terraform scripting, confugration is managed through Ansible.
+This diagram give a general understanding of the development process for the application. The frontend service provides a visual platform for the other 3 services to work within. The project is sourced controlled with git, stored on github and continuously delivered/integrated with Azure Pipelines. The infrastructure to run this architecture is spun up using terraform scripting, configuration is managed through Ansible.
 
 
 ## Service 1 - Frontend ##
@@ -84,7 +84,7 @@ This service performs the basic task of generating a random combination of anima
 
 
 ### Service 3 - Bonus Number ###
-This service is similarly basic, using the Random() class to return a random int from 0 to 9. This number represents a 'bonus number' which will be compared to the merge service number and contributen to the eventual prize generated. 
+This service is similarly basic, using the Random() class to return a random int from 0 to 9. This number represents a 'bonus number' which will be compared to the merge service number and contribute to the eventual prize generated. 
 
 
 ### Service 4 - Merge Service ###
@@ -93,7 +93,7 @@ The merge service is used to combine results from service 2 and 3 in order to pr
 
 
 ## Testing ##
-Extensive Unit testing was conducted on all service controllers, ensuring operations were not returning incorrect types or null values. The home controller followed repository pattern best practices in order to provide a layer of encapsulation to the database. Code coverage was extensive on all controllers. With the views ommitted from the test coverage report, the code coverage percentage is at 77% for all controllers.
+Extensive Unit testing was conducted on all service controllers, ensuring operations were not returning incorrect types or null values. The home controller followed repository pattern best practices in order to provide a layer of encapsulation to the database. Code coverage was extensive on all controllers. With the views omitted from the test coverage report, the code coverage percentage is at 77% for all controllers.
 ![testing coverage](Images/finalcoverage.PNG)
 
 
