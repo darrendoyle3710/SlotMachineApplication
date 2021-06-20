@@ -52,7 +52,7 @@ These risks were formulated based on the technology stack required for the proje
 
 ### User Stories ###
 ![Kanban](Images/Kanban.PNG)
-Using Jira, the project requirements were tracked continuously using a kanban board which can be seen [here](https://darrendoyle.atlassian.net/jira/software/projects/SMA/boards/4 "Named link title"). The project tracking process was very simple and revolved around user stories which could either be frontend or backend related. A user story will usually outline a job that needs to be done from a developer or user perspective. I put all user stories on the backlog and when it was time to use them, I would put them on the kanban board. The kanban board has four simple stages: To Do, In Progress, Testing, Done. To Do means the story is yet to be taken up or worked on yet, this may be because of dependency on another user story. In Progress means the story is being worked on currently. Testing means the completed story is being analysed for any bugs, if it passes it moves to Done.
+Using Jira, the project requirements were tracked continuously using a kanban board which can be seen [here](https://darrendoyle.atlassian.net/jira/software/projects/SMA/boards/4 "Named link title"). The project tracking process was very simple and revolved around user stories which could either be frontend or related to the other micro services. A user story will usually outline a job that needs to be done from a developer or user perspective. I put all user stories on the backlog and when it was time to use them, I would put them on the kanban board. The kanban board has four simple stages: To Do, In Progress, Testing, Done. To Do means the story is yet to be taken up or worked on yet, this may be because of dependency on another user story. In Progress means the story is being worked on currently. Testing means the completed story is being analysed for any bugs, if it passes it moves to Done.
 
 
 ## Design ##
@@ -68,55 +68,46 @@ Using Jira, the project requirements were tracked continuously using a kanban bo
 
 ![Application](Images/appplan.png)
 
-This diagram give a general understanding of the development process for the application. The frontend and backend are developed on separate IDEs and pushed to a github repository. This repository can be accessed from the devops environment where automated scripts can be ran and tested constinuously through Pipelines. The app service will host the application. 
+This diagram give a general understanding of the development process for the application. The frontend service provides a visual platform for the other 3 services to work within. The project is sourced controlled with git, stored on github and continuously deliverd/integrated with Azure Pipelines. The infrastructure to run this architexture is spun up using terraform scripting, confugration is managed through Ansible.
 
 
 ## Service 1 - Frontend ##
-The frontend was designed using an Angular framework form javascript, this was stretch goal which was I felt was necessary to consolidate my learning. In the frontend I tried to showcase as much as I learned in training with the Ng module, Component-Orientated project structure, Directives and Observables.
-
+The frontend service provides a UI with which to work with the other services within the application. It is a Model View Controller(MVC) desgined service which displays html in web browser, the main page displays a users slot machine results and options to spin again or save spins. The home controller parses results from the merge service which are passed in json format. These results are displayed using viewbag variables. 
 
 ### Database ###
 ![ERD](ERD.PNG)
-There are two database tables which are Users and Posts. Users is the entity which represents a user on the system, they have a user account which permits them to create Posts. This relationship between the tables is a **One and Only One To Zero Or Many**, a user can none or many posts, while a post only belongs to a single User record if it exists. This establishes a UserID foreign key in the Posts table which establishes the link. Users will be able to use CRUD functionality on the post table through the application built on this database.
+There is a MySQL database hosted in Azure which attaches to the frontend service. The database has one table for storing user 'Spins', this allows users to save their best spins and see prizes won over time. The frontend controller has actionresults which display all records in the spin table and also have create and delete functions.
 
 
 ## Service 2 - Random Animals ## 
-The backend was designed in ASP.Net Core, and was implemented as an API application which could be called from the frontend. This means it is acting as the middle-man between user experience and the relational MYSQL database. This API would have controllers for the Post and User table, handling the CRUD operations and returning JSON value to via HTTP requests. 
-![Backend](Images/backendstructure.PNG)
+This service performs the basic task of generating a random combination of animals in a string. Using the Random() class to select animals from a static string array of pre defined animals to create a 'random' combination. There is no logic in this service, it simply returns a strig when called.
 
 
 ### Service 3 - Bonus Number ###
-The database of choice was MYSQL, which is hosted on an Azure Virtual Machine. To hook this up to the application we needed a connection string and appropriate Data models to represent the tables with in the database. 
+This service is similarly basic, using the Random() class to return a random int from 0 to 9. This number represents a 'bonus number' which will be compared to the merge service number and contributen to the eventual prize generated. 
 
 
 ### Service 4 - Merge Service ###
 ![user controller](Images/UserController.PNG)
-The user controller is handling all operations related to the user table, there are methods written which return a JSON object. The methods written use Database Context in order to directly query the database and write logic in order to fulfil user requests. This includes a login, deletion and registration method.
+The merge service is used to combine results from service 2 and 3 in order to produce a 'prize' result. The service has logic which calculates the prize allowance based on the random animal and bonus number returned. The results are consistent as there are defined conditions based on each random scenario from the other services. The result of these calculations is slotted within a json structured string for the frontend service to use.
 
 
 ## Testing ##
-Extensive Unit testing was conducted on both controllers, ensuring operations were not returning incorrect types or null values. The controllers followed repository pattern best practices in order to provide a layer of encapsulation to the database. Code coverage was extensive on both controllers, I did not have view models in my project which might bring my percentage of coverage down (based on the coverage.json file). The tests carried out on the controller methods focused on return types and ensuring results were not null. 
+Extensive Unit testing was conducted on all service controllers, ensuring operations were not returning incorrect types or null values. The home controller followed repository pattern best practices in order to provide a layer of encapsulation to the database. Code coverage was extensive on all controllers. With the views ommitted from the test coverage report, the code coverage percentage is at 77% for all controllers.
 ![testing coverage](Images/finalcoverage.PNG)
 
 
 ## Terraform ##
-The application was deployed with Azure DevOps using Azure pipelines. This set up allows for continuous deployment and integration of application builds while staying live in deployment. The application itself is being hosted on azure app service, with a virtual machine acting as a build agent. Below we can see the successful pipleline build of the application and subequent deployment to the app server. The devops project can be found [here](https://dev.azure.com/darrenadoyle/fifa-finder-project "Named link title")
-
 
 ## Ansible ##
-The application was deployed with Azure DevOps using Azure pipelines. This set up allows for continuous deployment and integration of application builds while staying live in deployment. The application itself is being hosted on azure app service, with a virtual machine acting as a build agent. Below we can see the successful pipleline build of the application and subequent deployment to the app server. The devops project can be found [here](https://dev.azure.com/darrenadoyle/fifa-finder-project "Named link title")
-
 
 ## CI/CD Pipeline & Deployment ##
-The application was deployed with Azure DevOps using Azure pipelines. This set up allows for continuous deployment and integration of application builds while staying live in deployment. The application itself is being hosted on azure app service, with a virtual machine acting as a build agent. Below we can see the successful pipleline build of the application and subequent deployment to the app server. The devops project can be found [here](https://dev.azure.com/darrenadoyle/fifa-finder-project "Named link title")
 
-
-![Backend](Images/backenddeploy.PNG)
 
 
 ## What To Improve ## 
-* The repository pattern was implemented too late and made project timing difficult, this had a knock on effect to other areas of the application.
-* Based on the last step, there were issues parsing the user object back to the frontend, despite my best efforts using a data bind model to return the user ID for posts.
+* 
+* 
 * Issues with deployment of the separate applications.
 
 
