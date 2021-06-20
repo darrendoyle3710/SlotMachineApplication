@@ -41,7 +41,7 @@ These risks were formulated based on the technology stack required for the proje
 #### Risk Assessment Matrix ####
 |   Risk          | Evaluation | Likelihood| Impact  | Responsibility   |Response   | Control Measure  |
 |:-------|:------|:---    |:---    |:-------|:------|:-----  |
-| Application's virtual machine goes down | Application goes offline| Low | High | Cloud Service Provider  | Recreate infrastruture on another machine |  Use infrastructure as code to quickly recreate machine  |
+| Application's virtual machine goes down | Application goes offline| Low | High | Cloud Service Provider  | Recreate infrastruture on another machine |  Use terraform scripting to rapidly recreate infrastructure  |
 | Broken version deployed onto production   | Application may not have all required features functional  |   Medium    | High | Developer     | Revert production to latest stable verion  | Automate tests before production push and restrict access to production branch      |
 | DDOS attack    | Server goes down |    Medium    | High | Microsoft | Recreate infrastruture on another machine  |  Use infrastructure as code to quickly recreate machine   |
 | High traffic    | Server requests could be unreliable/unavailable   |  Medium  | High| Developer  | Buy more azure server network allocation  | Ensure services are elastic|
