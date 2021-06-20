@@ -17,6 +17,8 @@ specifically, this will involve:
 ## The Idea ##
 The application is based on a traditional slot machine with an additional twist; a bonus number. The user will get a random combination of animals on a spin, there are prizes rewarded depending on the combination. The application will simulate a spin on the slot machine and the application idea incorporates multiple services working together to generate a 'random' prize for the user. 
 
+![prizes](Images/prizecombos.PNG)
+
 
 ## Requirements ##
 The conception of this project involved setting up a clear structure of requirements. I undertook MoSCoW prioritization techniques to get started; this a common requirements management strategy for agile based development projects. I looked at project requirements under 4 scopes: **Must Have, Should Have, Could Have and Won't Have;** listed in descending order of priority.
@@ -24,7 +26,7 @@ The conception of this project involved setting up a clear structure of requirem
 
 #### MoSCoW Requirements Diagram ####
 
-![MoSCoW Requirements Diagram](Images/Requirements.PNG)
+![MoSCoW Requirements Diagram](Images/Moscow.PNG)
 
 In the four quadrants above, each represents one the prioritization categories, the **Must Have** section is the most important because it represents requirements which must be met in order to obtain a minimum viable product. The next step is representing the project requirements in a more development-digestible format using a **Kanban board**; the requirements will be broken down through **Stories and Epics**
 
@@ -51,7 +53,8 @@ These risks were formulated based on the technology stack required for the proje
 
 
 ### User Stories ###
-![Kanban](Images/Kanban.PNG)
+![Kanban](Images/Jira.PNG)
+
 Using Jira, the project requirements were tracked continuously using a kanban board which can be seen [here](https://darrendoyle.atlassian.net/jira/software/projects/SMA/boards/4 "Named link title"). The project tracking process was very simple and revolved around user stories which could either be frontend or related to the other micro services. A user story will usually outline a job that needs to be done from a developer or user perspective. I put all user stories on the backlog and when it was time to use them, I would put them on the kanban board. The kanban board has four simple stages: To Do, In Progress, Testing, Done. To Do means the story is yet to be taken up or worked on yet, this may be because of dependency on another user story. In Progress means the story is being worked on currently. Testing means the completed story is being analysed for any bugs, if it passes it moves to Done.
 
 
@@ -66,47 +69,79 @@ Using Jira, the project requirements were tracked continuously using a kanban bo
 * Infrastructure as Code: Terraform
 * Configuration Management: Ansible
 
-![Application](Images/appplan.png)
+![Application](Images/appplan.png) NOT DONE YET****
 
 This diagram give a general understanding of the development process for the application. The frontend service provides a visual platform for the other 3 services to work within. The project is sourced controlled with git, stored on github and continuously delivered/integrated with Azure Pipelines. The infrastructure to run this architecture is spun up using terraform scripting, configuration is managed through Ansible.
 
+## Project Structure ##
+![structure](Images/projectstructure.PNG)
+
+
 
 ## Service 1 - Frontend ##
+![frontend](Images/homepage.PNG)
+
 The frontend service provides a UI with which to work with the other services within the application. It is a Model View Controller(MVC) desgined service which displays html in web browser, the main page displays a users slot machine results and options to spin again or save spins. The home controller parses results from the merge service which are passed in json format. These results are displayed using viewbag variables. 
 
+![frontend](Images/frontend.PNG)
+
+
+
+
 ### Database ###
-![ERD](ERD.PNG)
+![database](Images/spinmodel.PNG)
+
 There is a MySQL database hosted in Azure which attaches to the frontend service. The database has one table for storing user 'Spins', this allows users to save their best spins and see prizes won over time. The frontend controller has actionresults which display all records in the spin table and also have create and delete functions.
+
+![database](Images/viewspins.PNG)
+
+
 
 
 ## Service 2 - Random Animals ## 
+![animals](Images/randomanimals.PNG)
+
 This service performs the basic task of generating a random combination of animals in a string. Using the Random() class to select animals from a static string array of pre defined animals to create a 'random' combination. There is no logic in this service, it simply returns a strig when called.
 
 
+
+
 ### Service 3 - Bonus Number ###
+
+![bonus number](Images/bonusnumber.PNG)
+
 This service is similarly basic, using the Random() class to return a random int from 0 to 9. This number represents a 'bonus number' which will be compared to the merge service number and contribute to the eventual prize generated. 
 
 
+
+
 ### Service 4 - Merge Service ###
-![user controller](Images/UserController.PNG)
+![merge](Images/merge.PNG)
+
 The merge service is used to combine results from service 2 and 3 in order to produce a 'prize' result. The service has logic which calculates the prize allowance based on the random animal and bonus number returned. The results are consistent as there are defined conditions based on each random scenario from the other services. The result of these calculations is slotted within a json structured string for the frontend service to use.
 
 
+
 ## Testing ##
+![testing](Images/tests.PNG)
+
 Extensive Unit testing was conducted on all service controllers, ensuring operations were not returning incorrect types or null values. The home controller followed repository pattern best practices in order to provide a layer of encapsulation to the database. Code coverage was extensive on all controllers. With the views omitted from the test coverage report, the code coverage percentage is at 77% for all controllers.
-![testing coverage](Images/finalcoverage.PNG)
+
+![testing coverage](Images/codecoverage.PNG)
+
+
 
 
 ## Terraform ##
-
+NOT DONE YET****
 ## Ansible ##
-
+NOT DONE YET****
 ## CI/CD Pipeline & Deployment ##
-
+NOT DONE YET****
 
 
 ## What To Improve ## 
-* 
+* NOT DONE YET****
 * 
 * 
 
