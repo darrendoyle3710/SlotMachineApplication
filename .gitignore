@@ -9,7 +9,6 @@
 *.user
 *.userosscache
 *.sln.docstates
-*settings.json
 appsettings.json
 .terraform
 .terraform.lock.hcl
