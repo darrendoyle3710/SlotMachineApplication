@@ -1,4 +1,4 @@
-name: Deploy ASP.NET Animals Application to Azure App Service
+name: Deploy ASP.NET Numbers Application to Azure App Service
 
 on:
   push:
