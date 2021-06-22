@@ -12,7 +12,8 @@ env:
   AZURE_WEBAPP_NAME: darrentesting
     # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: './code/RandomAnimals'      # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: '5.0.x'           # set this to the dot net version to use
+  DOTNET_VERSION: '5.0.x'
+  NUGET_VERSION: '5.10.0' # set this to the dot net version to use
 
 jobs:
   build-and-deploy:
@@ -22,6 +23,13 @@ jobs:
       # Checkout the repo
       - uses: actions/checkout@main
       
+      - name: Install Nuget
+        uses: nuget/setup-nuget@v1
+        with:
+            nuget-version: ${{ env.NUGET_VERSION}}
+      - name: NuGet to restore dependencies as well as project-specific tools that are specified in the project file
+        run: nuget restore
+        
       # Setup .NET Core SDK
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
