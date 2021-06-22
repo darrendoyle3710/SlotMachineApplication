@@ -1,3 +1,3 @@
-project_name = "finalprojtest"
+project_name = "slotmachineapplication"
 location     = "uksouth"
 services = [ "Animals", "Number", "Merge", "Frontend" ] 
