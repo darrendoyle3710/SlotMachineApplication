@@ -13,6 +13,8 @@
 appsettings.json
 .terraform
 .terraform.lock.hcl
+terraform.tfstate
+plan
 terraform-provider-azurerm_v2.46.1_x5
 
 
