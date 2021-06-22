@@ -44,7 +44,6 @@ namespace Frontend.Controllers
             repository.Spins.Delete(spinToDelete);
             repository.Save();
 
-
             return RedirectToAction("ViewSpins");
         }
 
@@ -52,11 +51,9 @@ namespace Frontend.Controllers
         [HttpPost("Index")]
         public ActionResult<Spin> Create(AddSpin bindingModel)
         {
-            Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bind model" + bindingModel.Animals + " prize " + bindingModel.Prize + " bonus " + bindingModel.BonusBall);
             var spinToCreate = new Spin { Animals = bindingModel.Animals, BonusBall = bindingModel.BonusBall, Prize = bindingModel.Prize, CreatedAt = DateTime.Now };
             repository.Spins.Create(spinToCreate);
             repository.Save();
-
             
             return RedirectToAction("Index");
         }
@@ -69,10 +66,8 @@ namespace Frontend.Controllers
             ViewBag.responseBonusNumber = details["Bonus"];
             ViewBag.responseNumber = details["Number"];
             ViewBag.responseAnimal = details["Animals"];
-            // Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> view bags" + details["Animals"] + details["Number"] + details["Bonus"] + details["Prize"]);
             if (ViewBag.responseBonusNumber == ViewBag.responseNumber) ViewBag.bonus = true;
             else ViewBag.bonus = false;
-            // Debug.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> num" + details["Number"] + " bonus " + details["Bonus"]);
             return View();
         }
 
