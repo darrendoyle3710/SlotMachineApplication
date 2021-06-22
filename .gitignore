@@ -11,6 +11,10 @@
 *.sln.docstates
 *settings.json
 appsettings.json
+.terraform
+.terraform.lock.hcl
+terraform-provider-azurerm_v2.46.1_x5
+
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
