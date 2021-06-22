@@ -28,12 +28,6 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }} 
       
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.0.2
-
-      - name: Run MSBuild
-        run: msbuild ./code/BonusNumber/BonusNumber.csproj
-      
       # Run dotnet build and publish
       - name: dotnet restore
         run: dotnet restore .\code\BonusNumber
