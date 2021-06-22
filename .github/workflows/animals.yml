@@ -33,7 +33,7 @@ jobs:
         run: |
           dotnet restore
           dotnet build --configuration Release
-          dotnet publish -c Release -o .\code\RandomAnimals\RandomAnimals.csproj
+          dotnet publish -c Release .\code\RandomAnimals\RandomAnimals.csproj
           
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
