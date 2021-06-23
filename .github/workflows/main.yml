@@ -168,3 +168,4 @@ jobs:
           app-name: ${{ env.FRONTEND_WEBAPP_NAME }} # Replace with your app name
           publish-profile: ${{ secrets.FRONTEND_APP_PUBLISH_PROFILE  }} # Define secret variable in repository settings as per action documentation
           package: '${{ env.FRONTEND_WEBAPP_PACKAGE_PATH }}/myapp' 
+          
