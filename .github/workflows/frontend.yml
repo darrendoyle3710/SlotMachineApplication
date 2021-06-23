@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - '*'
 
 env:
   AZURE_WEBAPP_NAME: Frontend-app-service-darrendoyleslotapp
