@@ -130,12 +130,19 @@ Extensive Unit testing was conducted on all service controllers, ensuring operat
 
 
 
-
 ## Terraform ##
-NOT DONE YET****
 
-## Github Actions ##
-NOT DONE YET****
+Terraform was used to create infrastructure as code for the application. I used a branch model structure to orginize my terraform scripts. This separated the enviornments into staging and production. The environments have unique values for variables in .tfvar files which then apply themselves to the infrastructure folders. 
+
+Infrastructure is separated by modules, covering all application services, plan and database server. Depending on the .tfvar associated at runtime, variables are initialised for the project name and service names. Resources that are dependent on other services for configuration (e.g animal service + number service -> merge service) will use output defined in corresponding modules. Resources are generated with accurate configuration so no manual tweaking is necessary, after applying the plan for the production script, there are 4 application services, a service plan and mysql database. This infrastucture is ready for application code in production.
+
+## CI/CD Pipeline ##
+
+The deployment is handled through a github actions pipeline, using one workflow from this github repository. The yaml file outlines jobs around testing and deploying each service to azure app services created in terraform. Environment variables are defined at the top of the file to handle file paths of each application in the repository and application service name on azure. Publish profiles were downloaded for each azure app service and stored in the repository secrets tab, this profile is used to verify and authenticate with azure at point of deployment for each application. 
+
+The first job runs dotnet test on predefined unit tests from the solution. These tests are ran and results are displayed in the terminal, this verifies that the deployed application is still passing basic functionality. The other jobs build and deploy the dotnet environment and create a folder for the deployed version of each application. If the four services manage to deploy, the frontend  azure app service will display the slot machine application. 
+
+The script is written to trigger on a push to the main branch of the application. This means that once a change in the develop branch is accepted and merged into main, the application will run the github workflow and re-deploy the application with minimal downtime. 
 
 
 
