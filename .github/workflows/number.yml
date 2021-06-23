@@ -19,7 +19,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        working-directory: ./code/RandomAnimals
+        working-directory: ./code/BonusNumber
     steps:
 
       # Checkout the repo
