@@ -12,34 +12,36 @@ env:
   AZURE_WEBAPP_NAME: Frontend-app-service-slotmachineapplication
 
     # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: '.\code\Frontend\'      # set this to the path to your web app project, defaults to the repository root
+  AZURE_WEBAPP_PACKAGE_PATH: 'D:\a\SlotMachineApplication\SlotMachineApplication\code\BonusNumber'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '5.0.x'
 
 jobs:
   build-and-deploy:
     runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: ./code/Frontend
     steps:
 
       # Checkout the repo
       - uses: actions/checkout@main
         
+     
       # Setup .NET Core SDK
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }} 
-      
-      # Run dotnet restore
-      - name: dotnet restore
-        run: dotnet restore .\code\Frontend\Frontend.csproj
           
-        # Run dotnet build
-      - name: dotnet build
-        run:  dotnet build --configuration Release .\code\Frontend\Frontend.csproj
-          
-        # Run dotnet publish
-      - name: dotnet publish
-        run:  dotnet publish -c Release .\code\Frontend\Frontend.csproj
+      - name: where are we
+        run: pwd
+        
+     # Run dotnet build and publish
+      - name: dotnet build and publish
+        run: |
+          dotnet restore
+          dotnet build --configuration Release
+          dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
           
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
@@ -47,4 +49,4 @@ jobs:
         with: 
           app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
           publish-profile: ${{ secrets.FRONTEND_APP_PUBLISH_PROFILE  }} # Define secret variable in repository settings as per action documentation
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp' 
