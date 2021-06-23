@@ -33,7 +33,7 @@ namespace Merge.Controllers
         };
 
         // switched to public access modifier GetPrize for unit test
-        private string GetPrize(string animalsServiceResponseCall, string numberServiceTwoResponseCall, int returnIndex)
+        public string GetPrize(string animalsServiceResponseCall, string numberServiceTwoResponseCall, int returnIndex)
         {
             var prize = Prizes[0];
             if (numberServiceTwoResponseCall == Numbers[returnIndex]) prize = Prizes[1];

@@ -50,12 +50,12 @@ namespace SlotMachineApplication.Tests.Controllers
         {
             //Act
             var controllerActionResult = mergeController.Get();
-            //var getPrizeResult = mergeController.GetPrize("dogdogcat","4",3);
+            var getPrizeResult = mergeController.GetPrize("dogdogcat","4",3);
             //Assert
             controllerActionResult.Should().NotBeNull();
             controllerActionResult.Should().BeOfType<Task<IActionResult>>();
-            //getPrizeResult.Should().BeOfType<string>();
-            //Assert.Equal($@"{{'Animals':'dogdogcat','Number':'4','Prize':'$1500','Bonus':'4'}}",getPrizeResult);
+            getPrizeResult.Should().BeOfType<string>();
+            Assert.Equal($@"{{'Animals':'dogdogcat','Number':'4','Prize':'$1500','Bonus':'4'}}",getPrizeResult);
         
         }
     }
