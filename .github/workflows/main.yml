@@ -9,6 +9,8 @@ on:
       - main
       
 env:
+  TEST_DIRECTORY: ./code/SlotMachineApplication.Tests
+  
   NUMBER_WEBAPP_NAME: Number-app-service-darrendoyleslotapp
   NUMBER_WEBAPP_PACKAGE_PATH: 'D:\a\SlotMachineApplication\SlotMachineApplication\code\BonusNumber'    
   NUMBER_WORKING_DIRECTORY: ./code/BonusNumber
@@ -29,6 +31,13 @@ env:
   CONFIGURATION: Release
 
 jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test
+        run: dotnet test "${{ env.TEST_DIRECTORY }}" /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
+        
   numbers-build-and-deploy:
     runs-on: windows-latest
     defaults:
@@ -46,8 +55,6 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }} 
           
-      - name: where are we
-        run: pwd
         
      # Run dotnet build and publish
       - name: dotnet build and publish
@@ -81,8 +88,6 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }} 
           
-      - name: where are we
-        run: pwd
         
      # Run dotnet build and publish
       - name: dotnet build and publish
@@ -116,8 +121,6 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }} 
           
-      - name: where are we
-        run: pwd
         
      # Run dotnet build and publish
       - name: dotnet build and publish
@@ -151,8 +154,6 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }} 
           
-      - name: where are we
-        run: pwd
         
      # Run dotnet build and publish
       - name: dotnet build and publish
