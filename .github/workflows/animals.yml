@@ -17,28 +17,30 @@ env:
 jobs:
   build-and-deploy:
     runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: ./code/RandomAnimals
     steps:
 
       # Checkout the repo
       - uses: actions/checkout@main
         
-      - name: change directory
-        run: Set-Location -Path ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+     
       # Setup .NET Core SDK
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }} 
+          
       - name: where are we
         run: pwd
-      - name: where are we
-        run: ls
+        
      # Run dotnet build and publish
       - name: dotnet build and publish
         run: |
           dotnet restore
           dotnet build --configuration Release
-          dotnet publish -c Release -o
+          dotnet publish -c Release 
           
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
