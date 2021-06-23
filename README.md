@@ -43,9 +43,9 @@ These risks were formulated based on the technology stack required for the proje
 #### Risk Assessment Matrix ####
 |   Risk          | Evaluation | Likelihood| Impact  | Responsibility   |Response   | Control Measure  |
 |:-------|:------|:---    |:---    |:-------|:------|:-----  |
-| Application's virtual machine goes down | Application goes offline| Low | High | Cloud Service Provider  | Recreate infrastructure on another machine |  Use terraform scripting to rapidly recreate infrastructure  |
+| Application's virtual machine goes down | Application goes offline| Low | High | Cloud Service Provider  | Recreate infrastructure on another machine |  Use terraform scripts to rapidly recreate infrastructure  |
 | Broken version deployed onto production   | Application may not have all required features functional  |   Medium    | High | Developer     | Revert production to latest stable version  | Automate tests before production push and restrict access to production branch      |
-| DDOS attack    | Server goes down |    Medium    | High | Microsoft | Recreate infrastructure on another machine  |  Use infrastructure as code to quickly recreate machine   |
+| DDOS attack    | Server goes down |    Medium    | High | Microsoft | Use terraform scripts to recreate infrastructure on another machine  |  Use terraform scripts to quickly recreate machine   |
 | High traffic    | Server requests could be unreliable/unavailable   |  Medium  | High| Developer  | Buy more azure server network allocation  | Ensure services are elastic|
 | Data breach    | Customer data compromised   |   Medium    | Medium | Developer  | Notify relevant parties | Revise project access hierarchy and advise on latest security practices|
 | Regional power outage     | Application goes offline   |    Low    | High | Cloud Service Provider  | Recreate infrastructure in another region  | Set up standby server in another region |
@@ -134,9 +134,17 @@ Extensive Unit testing was conducted on all service controllers, ensuring operat
 
 Terraform was used to create infrastructure as code for the application. I used a branch model structure to orginize my terraform scripts. This separated the enviornments into staging and production. The environments have unique values for variables in .tfvar files which then apply themselves to the infrastructure folders. 
 
-Infrastructure is separated by modules, covering all application services, plan and database server. Depending on the .tfvar associated at runtime, variables are initialised for the project name and service names. Resources that are dependent on other services for configuration (e.g animal service + number service -> merge service) will use output defined in corresponding modules. Resources are generated with accurate configuration so no manual tweaking is necessary, after applying the plan for the production script, there are 4 application services, a service plan and mysql database. This infrastucture is ready for application code in production.
+** pic terraform folder 
+
+Infrastructure is separated by modules, covering all application services, plan and database server. Depending on the .tfvar associated at runtime, variables are initialised for the project name and service names. Resources that are dependent on other services for configuration (e.g animal service + number service -> merge service) will use output defined in corresponding modules. 
+
+** terraform infra files
+
+Resources are generated with accurate configuration so no manual tweaking is necessary, after applying the plan for the production script, there are 4 application services, a service plan and mysql database. This infrastucture is ready for application code in production. The staging script could be ran and generate infrastructure of similar configuration for testing/development purposes.
 
 ## CI/CD Pipeline ##
+
+** show app code - branching - github actions - azure - terraform
 
 The deployment is handled through a github actions pipeline, using one workflow from this github repository. The yaml file outlines jobs around testing and deploying each service to azure app services created in terraform. Environment variables are defined at the top of the file to handle file paths of each application in the repository and application service name on azure. Publish profiles were downloaded for each azure app service and stored in the repository secrets tab, this profile is used to verify and authenticate with azure at point of deployment for each application. 
 
