@@ -5,4 +5,8 @@ resource "azurerm_app_service" "main" {
     location            = var.location
     resource_group_name = var.group_name
     app_service_plan_id = var.app_service_plan_id
+
+    tags = {
+    project = "true"
+  }
 }

@@ -13,4 +13,8 @@ resource "azurerm_app_service" "main" {
     type  = "MySql"
     value = var.db_string
   }
+
+  tags = {
+    project = "true"
+  }
 }

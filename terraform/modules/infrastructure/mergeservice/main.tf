@@ -8,4 +8,8 @@ resource "azurerm_app_service" "main" {
      "animalServiceURL" = "${var.random_services_url[0]}"
      "numberServiceURL" = "${var.random_services_url[1]}"
   }
+
+  tags = {
+    project = "true"
+  }
 }

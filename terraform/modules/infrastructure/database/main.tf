@@ -13,6 +13,10 @@ resource "azurerm_mysql_server" "main" {
   auto_grow_enabled                 = false
   ssl_enforcement_enabled           = true
 
+  tags = {
+    project = "true"
+  }
+
 }
 
 resource "azurerm_mysql_firewall_rule" "client" {

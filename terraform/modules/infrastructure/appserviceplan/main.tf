@@ -7,4 +7,8 @@ resource "azurerm_app_service_plan" "main" {
     tier = "Basic"
     size = "B1"
   }
+
+  tags = {
+    project = "true"
+  }
 }
