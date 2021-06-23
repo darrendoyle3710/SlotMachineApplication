@@ -25,6 +25,9 @@ env:
   FRONTEND_WEBAPP_PACKAGE_PATH: 'D:\a\SlotMachineApplication\SlotMachineApplication\code\Frontend'   
   FRONTEND_WORKING_DIRECTORY: ./code/FrontEnd
   
+  AZURE_WEBAPP_NAME: Frontend-app-service-darrendoyleslotapp
+  AZURE_WEBAPP_PACKAGE_PATH: 'D:\a\SlotMachineApplication\SlotMachineApplication\code\Frontend'
+  
   DOTNET_VERSION: '5.0.x'
   CONFIGURATION: Release
 
@@ -138,7 +141,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        working-directory: ${{ env.FRONTEND_WORKING_DIRECTORY }}
+        working-directory: ./code/Frontend
     steps:
 
       # Checkout the repo
@@ -158,14 +161,14 @@ jobs:
       - name: dotnet build and publish
         run: |
           dotnet restore
-          dotnet build --configuration ${{ env.CONFIGURATION }}
+          dotnet build --configuration Release
           dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
           
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
         uses: azure/webapps-deploy@v2
         with: 
-          app-name: ${{ env.FRONTEND_WEBAPP_NAME }} # Replace with your app name
+          app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
           publish-profile: ${{ secrets.FRONTEND_APP_PUBLISH_PROFILE  }} # Define secret variable in repository settings as per action documentation
-          package: '${{ env.FRONTEND_WEBAPP_PACKAGE_PATH }}/myapp' 
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp' 
           
