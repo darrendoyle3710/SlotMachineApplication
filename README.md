@@ -61,13 +61,12 @@ Using Jira, the project requirements were tracked continuously using a kanban bo
 ## Design ##
 ### Technologies Used ###
 * Kanban Board: Jira
-* Database: MySQL
 * Programming languages: C#
 * Version Control: Git
-* CI Server: Azure Pipelines
+* CI Server: Github Actions
+* Database: MySQL
 * Cloud Platform: Azure
 * Infrastructure as Code: Terraform
-* Configuration Management: Ansible
 
 ![Application](Images/appplan.png) NOT DONE YET****
 
@@ -91,7 +90,7 @@ The frontend service provides a UI with which to work with the other services wi
 ### Database ###
 ![database](Images/spinmodel.PNG)
 
-There is a MySQL database hosted in Azure which attaches to the frontend service. The database has one table for storing user 'Spins', this allows users to save their best spins and see prizes won over time. The frontend controller has actionresults which display all records in the spin table and also have create and delete functions.
+There is a MySQL database hosted in an Azure server which attaches to the frontend service. The database has one table for storing user 'Spins', this allows users to save their best spins and see prizes won over time. The frontend controller has actionresults which display all records in the spin table and also have create and delete functions.
 
 ![database](Images/viewspins.PNG)
 
@@ -134,16 +133,11 @@ Extensive Unit testing was conducted on all service controllers, ensuring operat
 
 ## Terraform ##
 NOT DONE YET****
-## Ansible ##
-NOT DONE YET****
-## CI/CD Pipeline & Deployment ##
+
+## Github Actions ##
 NOT DONE YET****
 
 
-## What To Improve ## 
-* NOT DONE YET****
-* 
-* 
 
 
 
