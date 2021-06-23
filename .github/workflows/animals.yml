@@ -11,7 +11,7 @@ on:
 env:
   AZURE_WEBAPP_NAME: Animals-app-service-slotmachineapplication
     # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: 'D:\a\SlotMachineApplication\SlotMachineApplication\code\RandomAnimals\'      # set this to the path to your web app project, defaults to the repository root
+  AZURE_WEBAPP_PACKAGE_PATH: 'D:/a/SlotMachineApplication/SlotMachineApplication/code/RandomAnimals/'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '5.0.x'
 
 jobs:
@@ -33,7 +33,7 @@ jobs:
         run: |
           dotnet restore
           dotnet build --configuration Release
-          dotnet publish -c Release --output .\code\RandomAnimals\
+          dotnet publish -c Release -o ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
           
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
