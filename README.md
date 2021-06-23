@@ -156,8 +156,12 @@ The first job runs dotnet test on predefined unit tests from the solution. These
 
 ![pipeline](Images/pipelinejob.PNG)
 
-The script is written to trigger on a push to the main branch of the application. This means that once a change in the develop branch is accepted and merged into main, the application will run the github workflow and re-deploy the application with minimal downtime. 
+The script is written to trigger on a push to the main branch of the application. This means that once a change in the develop branch is accepted and merged into main, the application will run the github workflow and re-deploy the application with minimal downtime. During tests of triggering the pipeline, it took under 3 minutes for the service to deploy with main branch changes.
 
+
+## Conclusion ##
+
+Overall I feel pleased with the result of my work in this project. I think I have a deliverable which meets the criteria for a robust pipeline which deploys an application with micro-service architecture. Infrasture is deployed rapidly through terraform and testing is managed soundly. I hope that this project reflect what I've learned with QA over the past 3 months and showcases my understanding of the technologies used.
 
 
 
